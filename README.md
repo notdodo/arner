@@ -1,2 +1,2 @@
-# arner
+# ARNer
 Correctly parse AWS ARN strings
