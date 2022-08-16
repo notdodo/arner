@@ -463,7 +463,6 @@ var ARNs = []struct {
 }
 
 func TestSupportedServices(t *testing.T) {
-
 	for _, test := range ARNs {
 		got, err := ParseARN(test.test)
 
