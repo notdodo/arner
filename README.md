@@ -1,5 +1,7 @@
 # ARNer
 
+<a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-93%25-brightgreen.svg?longCache=true&style=flat)</a>
+
 > Amazon Resource Names (ARNs) uniquely identify AWS resources. We require an ARN when you need to specify a resource unambiguously across all of AWS, such as in IAM policies, Amazon Relational Database Service (Amazon RDS) tags, and API calls.
 
 [Amazon Resource Names Documentation](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
