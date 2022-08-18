@@ -9,7 +9,7 @@ import (
 const (
 	arnDelimiter = ":"
 	arnSections  = 6
-	arnPrefix    = "arn:aws"
+	arnPrefix    = "arn:"
 
 	// zero-indexed
 	sectionPartition = 1

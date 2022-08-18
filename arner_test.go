@@ -460,6 +460,18 @@ var ARNs = []struct {
 			Path:         "",
 		},
 	},
+	{
+		test: "arn:*:iam::*:role/AWS-QuickSetup-StackSet-Local-ExecutionRole", // yes, this is real
+		expected: BetterARN{
+			Partition:    "*",
+			Service:      "iam",
+			Region:       "",
+			AccountID:    "*",
+			ResourceType: "role",
+			Resource:     "AWS-QuickSetup-StackSet-Local-ExecutionRole",
+			Path:         "",
+		},
+	},
 }
 
 func TestSupportedServices(t *testing.T) {
