@@ -30,7 +30,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "user",
 			Resource:     "JaneDoe",
-			Path:         "division_abc/subdivision_xyz",
+			Path:         "/division_abc/subdivision_xyz/",
 		},
 	},
 	{
@@ -42,7 +42,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "user",
 			Resource:     "JaneDoe",
-			Path:         "division_abc",
+			Path:         "/division_abc/",
 		},
 	},
 	{
@@ -66,7 +66,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "group",
 			Resource:     "Developers",
-			Path:         "division_abc/subdivision_xyz/product_A",
+			Path:         "/division_abc/subdivision_xyz/product_A/",
 		},
 	},
 	{
@@ -90,7 +90,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "role",
 			Resource:     "RDSAccess",
-			Path:         "application_abc/component_xyz",
+			Path:         "/application_abc/component_xyz/",
 		},
 	},
 	{
@@ -102,7 +102,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "role",
 			Resource:     "AWSServiceRoleForAccessAnalyzer",
-			Path:         "aws-service-role/access-analyzer.amazonaws.com",
+			Path:         "/aws-service-role/access-analyzer.amazonaws.com/",
 		},
 	},
 	{
@@ -114,7 +114,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "role",
 			Resource:     "QuickSightAction",
-			Path:         "service-role",
+			Path:         "/service-role/",
 		},
 	},
 	{
@@ -138,7 +138,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "policy",
 			Resource:     "UsersManageOwnCredentials",
-			Path:         "division_abc/subdivision_xyz",
+			Path:         "/division_abc/subdivision_xyz/",
 		},
 	},
 	{
@@ -198,7 +198,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "u2f",
 			Resource:     "default (U2F security key)",
-			Path:         "user/JohnDoe",
+			Path:         "/user/JohnDoe/",
 		},
 	},
 	{
@@ -222,7 +222,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "server-certificate",
 			Resource:     "ProdServerCert",
-			Path:         "division_abc/subdivision_xyz",
+			Path:         "/division_abc/subdivision_xyz/",
 		},
 	},
 	{
@@ -277,7 +277,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "instance-profile",
 			Resource:     "actual-instance-profile-role-name",
-			Path:         "division_abc",
+			Path:         "/division_abc/",
 		},
 	},
 	{
@@ -313,7 +313,7 @@ var ARNs = []struct {
 			AccountID:    "123456789012",
 			ResourceType: "role",
 			Resource:     "AWSServiceRoleForAPIGateway",
-			Path:         "aws-service-role/ops.apigateway.amazonaws.com",
+			Path:         "/aws-service-role/ops.apigateway.amazonaws.com/",
 		},
 	},
 	{
@@ -349,7 +349,7 @@ var ARNs = []struct {
 			AccountID:    "",
 			ResourceType: "",
 			Resource:     "bucket-name",
-			Path:         "",
+			Path:         "bucket-folder",
 		},
 	},
 	{
@@ -362,6 +362,30 @@ var ARNs = []struct {
 			ResourceType: "",
 			Resource:     "bucket-name",
 			Path:         "bucket-folder",
+		},
+	},
+	{
+		test: "arn:aws:s3:::bucket-name/bucket-folder/subfolder/*",
+		expected: BetterARN{
+			Partition:    "aws",
+			Service:      "s3",
+			Region:       "",
+			AccountID:    "",
+			ResourceType: "",
+			Resource:     "bucket-name",
+			Path:         "bucket-folder/subfolder",
+		},
+	},
+	{
+		test: "arn:aws:s3:::bucket-name/bucket-folder/subfolder",
+		expected: BetterARN{
+			Partition:    "aws",
+			Service:      "s3",
+			Region:       "",
+			AccountID:    "",
+			ResourceType: "",
+			Resource:     "bucket-name",
+			Path:         "bucket-folder/subfolder",
 		},
 	},
 	{

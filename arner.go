@@ -104,15 +104,19 @@ func ParseARN(arn string) (BetterARN, error) {
 func parseSlash(resource string) (resType, resName, resPath string) {
 	pathSplits := strings.Split(resource, "/")
 	if len(pathSplits) > 2 {
-		resPath = strings.Join(pathSplits[1:len(pathSplits)-1], "/")
+		resPath = "/" + strings.Join(pathSplits[1:len(pathSplits)-1], "/") + "/"
 	}
 	return pathSplits[0], pathSplits[len(pathSplits)-1], resPath
 }
 
 func parseS3(resource string) (bucketName, resPath string) {
 	pathSplits := strings.Split(resource, "/")
-	if len(pathSplits) >= 2 {
-		resPath = strings.Join(pathSplits[1:len(pathSplits)-1], "/")
+	if len(pathSplits) > 1 {
+		if pathSplits[len(pathSplits)-1] == "*" {
+			resPath = strings.Join(pathSplits[1:len(pathSplits)-1], "/")
+		} else {
+			resPath = strings.Join(pathSplits[1:], "/")
+		}
 	}
 	return pathSplits[0], resPath
 }
