@@ -512,3 +512,21 @@ func TestSupportedServices(t *testing.T) {
 
 	}
 }
+
+func TestString(t *testing.T) {
+	test := BetterARN{
+		Partition:    "aws",
+		Service:      "iam",
+		Region:       "",
+		AccountID:    "123456789012",
+		ResourceType: "user",
+		Resource:     "JaneDoe",
+		Path:         "/division_abc/subdivision_xyz/",
+	}
+	wanted := `{"Partition":"aws","Service":"iam","Region":"","AccountID":"123456789012","ResourceType":"user","Resource":"JaneDoe","Path":"/division_abc/subdivision_xyz/"}`
+	result := test.String()
+
+	if !reflect.DeepEqual(result, wanted) {
+		t.Errorf("mismatch!\n\tgot: %v\n\twanted: %v\n\toriginal: %s", result, wanted, test)
+	}
+}
