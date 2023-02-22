@@ -496,6 +496,18 @@ var ARNs = []struct {
 			Path:         "",
 		},
 	},
+	{
+		test: "arn:aws:iam::123456789012:user/${aws:username}",
+		expected: BetterARN{
+			Partition:    "aws",
+			Service:      "iam",
+			Region:       "",
+			AccountID:    "123456789012",
+			ResourceType: "user",
+			Resource:     "${aws:username}",
+			Path:         "",
+		},
+	},
 }
 
 func TestSupportedServices(t *testing.T) {
